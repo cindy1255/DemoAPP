@@ -9,5 +9,21 @@
             "APP_ID": "521613448006826",
             "APP_NAME": "myTed"
         }
+    },
+    "com.phonegap.plugins.PushPlugin": {
+        "source": {
+            "type": "registry",
+            "id": "com.phonegap.plugins.pushplugin"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
