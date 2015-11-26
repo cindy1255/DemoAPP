@@ -86,6 +86,8 @@ var push={
                    /*  dbmanager.checkFirstRun(function(returnData){
                         if(returnD ata.rows.length==0){*/
                             alert("Registrationid"+ e.regid);
+							var regid=document.getElementById("regid");
+					            regid.value=e.regid;
                        /*  }    
                     }); */
                 }
@@ -135,6 +137,57 @@ var push={
         }
     }
 };
+
+//google map
+var map;
+function initGoogleMap(){
+
+    var latlong=new google.maps.LatLng(1.542160222923056 , 103.80120195144707);
+
+    var mapOptions={
+        center:latlong,
+        zoom:12,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        navigationControlOptions: {
+            style: google.maps.NavigationControlStyle.SMALL
+        },
+        mapTypeControl: false,
+    };
+
+    map=new google.maps.Map(document.getElementById("geolocation"), mapOptions);
+    createMarker();
+}
+
+//mark location
+function createMarker() {
+var infowindow;
+infowindow = new google.maps.InfoWindow();
+    var contentString = "PSSB Johor Jaya<br><a href='https://google.com.my'>google.com</a>";
+    var latlong = new google.maps.LatLng(1.542160222923056 , 103.80120195144707);
+    var marker = new google.maps.Marker({
+        position: latlong,
+        map: map,
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(contentString); 
+        infowindow.open(map,marker);
+    });
+}
+
+//geolocation
+function resolveaddress() {
+var geocoder = new google.maps.Geocoder();
+var address="persada johor";
+geocoder.geocode({address:address}, function(results,status){ 
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var p = results[0].geometry.location;
+                    var lat=p.lat();
+                    var lng=p.lng();
+                    alert(lat+","+lng);
+                }
+});
+}
 
 function fbLogin(){
     alert("Checking..");

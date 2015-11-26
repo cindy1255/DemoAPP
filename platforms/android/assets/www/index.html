@@ -29,6 +29,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 		<script type="text/javascript" src="facebookConnectPlugin.js"></script>
 		<script type="text/javascript" src="PushNotification.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBdNCmY8P_u72FgpkdVqZ476PljKfbrhHs&sensor=false"></script>
         <title>Hello World</title>
     </head>
     <body> 
@@ -39,12 +40,16 @@
                 <p class="event received">Device is Ready</p>
 				<button onclick="fbLogin();">Facebook Login</button>
 				<button onclick="FBShowDialog('http://www.projeksistematik.com.my');">FB Share</button>
-            </div>
+				<input type="text" id="regid"></input>
+            </div>			
         </div>
+		<div id="geolocation" class="geolocationDiv"></div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            app.initialize();
+		    initGoogleMap();
+			resolveaddress();
+		    app.initialize();
         </script>
     </body>
 </html>
